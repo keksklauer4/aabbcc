@@ -609,13 +609,11 @@ namespace aabb
         return res;
     }
 
-    std::vector<unsigned int> Tree::query(unsigned int particle, const AABB& aabb, const std::function<bool(unsigned int)>& functor)
+    void Tree::query(unsigned int particle, const AABB& aabb, const std::function<bool(unsigned int)>& functor)
     {
         std::vector<unsigned int> stack;
         stack.reserve(256);
         stack.push_back(root);
-
-        std::vector<unsigned int> particles;
 
         while (stack.size() > 0)
         {
@@ -666,8 +664,6 @@ namespace aabb
                 }
             }
         }
-
-        return particles;
     }
 
     std::vector<unsigned int> Tree::query(const AABB& aabb)
