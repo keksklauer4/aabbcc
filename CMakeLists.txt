@@ -12,3 +12,5 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_library(aabbcc src/AABB.cc)
 
 target_include_directories(aabbcc PRIVATE src/)
+
+set(AABBCC_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)

@@ -10,6 +10,8 @@ Released under the [Zlib](http://zlib.net/zlib_license.html) license.
 I added a small CMake file and adjusted the query to allow for a ```std::function``` object (instead of returning a ```std::vector```).
 This is not the original source of the library as this is just a fork.
 
+I don't know whether the Python bindings still work, so use the original library instead.
+
 ## About
 A C++ implementation of a dynamic bounding volume hierarchy
 ([BVH](https://en.wikipedia.org/wiki/Bounding_volume_hierarchy)) using
