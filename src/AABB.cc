@@ -25,6 +25,7 @@
 */
 
 #include "AABB.h"
+#include <vector>
 
 namespace aabb
 {
@@ -600,10 +601,15 @@ namespace aabb
         }
 
         // Test overlap of particle AABB against all other particles.
-        return query(particle, nodes[particleMap.find(particle)->second].aabb);
+        std::vector<unsigned int> res{};
+        query(particle, nodes[particleMap.find(particle)->second].aabb, [&res](unsigned int particle){
+            res.push_back(particle);
+            return false;
+        });
+        return res;
     }
 
-    std::vector<unsigned int> Tree::query(unsigned int particle, const AABB& aabb)
+    std::vector<unsigned int> Tree::query(unsigned int particle, const AABB& aabb, const std::function<bool(unsigned int)>& functor)
     {
         std::vector<unsigned int> stack;
         stack.reserve(256);
@@ -650,7 +656,7 @@ namespace aabb
                     // Can't interact with itself.
                     if (nodes[node].particle != particle)
                     {
-                        particles.push_back(nodes[node].particle);
+                        if (!functor(nodes[node].particle)) break;
                     }
                 }
                 else
@@ -673,7 +679,12 @@ namespace aabb
         }
 
         // Test overlap of AABB against all particles.
-        return query(std::numeric_limits<unsigned int>::max(), aabb);
+        std::vector<unsigned int> res{};
+        query(std::numeric_limits<unsigned int>::max(), aabb, [&res](unsigned int particle){
+            res.push_back(particle);
+            return false;
+        });
+        return res;
     }
 
     const AABB& Tree::getAABB(unsigned int particle)

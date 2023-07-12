@@ -1,10 +1,14 @@
-# AABB.cc
+# AABB.cc (not original source)
 
 Copyright &copy; 2016-2018 [Lester Hedges](http://lesterhedges.net)
 
 [![Build Status](https://travis-ci.org/lohedges/aabbcc.svg?branch=master)](https://travis-ci.org/lohedges/aabbcc)
 
 Released under the [Zlib](http://zlib.net/zlib_license.html) license.
+
+## Adjustments
+I added a small CMake file and adjusted the query to allow for a ```std::function``` object (instead of returning a ```std::vector```).
+This is not the original source of the library as this is just a fork.
 
 ## About
 A C++ implementation of a dynamic bounding volume hierarchy

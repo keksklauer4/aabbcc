@@ -329,7 +329,7 @@ namespace aabb
             \return particles
                 A vector of particle indices.
          */
-        std::vector<unsigned int> query(unsigned int, const AABB&);
+        std::vector<unsigned int> query(unsigned int, const AABB&, const std::function<bool(unsigned int)>&);
 
         //! Query the tree to find candidate interactions for an AABB.
         /*! \param aabb

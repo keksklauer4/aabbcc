@@ -13,3 +13,6 @@ python/trajectory.xyz
 .check_python
 trajectory.xyz
 *.dSYM
+
+.cache/
+build/
